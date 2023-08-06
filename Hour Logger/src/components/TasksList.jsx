@@ -1,23 +1,28 @@
 import React from "react";
-import { Task } from './Task';
+import  Task  from './Task';
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
-export const TaskList = (props) => {
+const TaskList = (props) => {
     const { 
         tasksArr, 
         isRunningExist, 
         handleOnClick, 
-        checkedState, 
-        isActive 
+        isRunningArr, 
+        isActive,
+        removeHandler,
+        handleOnExpand,
+        taskExpandArr,
+        categoryArr,
+        isRunningHandleClick
     } = props;
 
+    const [parent, enableAnimations] = useAutoAnimate()
+
     return (
-        <div className="w-full grid grid-cols-3  mt-10">
-            <div className="border border-r-zinc-400 pb-[7px] border-b-zinc-400 text-[17px] font-bold">Task name</div>
-            <div className="border border-b-zinc-400 pb-[7px] text-[17px] font-bold">Category</div>
-            <div className="border border-l-zinc-400 pb-[7px] border-b-zinc-400 text-[17px] font-bold">Time</div>             
-
-
-                {tasksArr && tasksArr.map(({title, id, category, ticks, seconds, minutes, hours, newCategory}, index) => (
+        <div className="w-full mt-[50px] px-[50px] w-[1200px] mx-auto left-0">
+            {/* grid grid-cols-3  */}
+         
+                {tasksArr && tasksArr.map(({title, id, category, ticks, seconds, minutes, hours, newCategory, timeLog}, index) => (
                     <Task 
                         title={title} 
                         key={id}
@@ -31,11 +36,19 @@ export const TaskList = (props) => {
                         newCategory={newCategory}
                         isRunningExist={isRunningExist}
                         handleOnClick={handleOnClick}
-                        checkedState={checkedState}
+                        isRunningArr={isRunningArr}
                         index={index}
                         isActive={isActive}
+                        removeHandler={removeHandler}
+                        handleOnExpand={handleOnExpand}
+                        taskExpandArr={taskExpandArr}
+                        timeLog={timeLog}
+                        categoryArr={categoryArr}
+                        isRunningHandleClick={isRunningHandleClick}
                     />
                 ))}
         </div>
     )
 }
+
+export default React.memo(TaskList)

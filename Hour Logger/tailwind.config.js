@@ -19,6 +19,7 @@ export default {
       '10': '0.1',
       '20': '0.2',
       '50': '0.5',
+      '60': '0.6',
       '70': '0.7',
       '80': '0.8',
       '85': '0.85',
@@ -38,11 +39,13 @@ export default {
       '10': '40px',
       'high': '700px',
       'start':'60.969px',
-      'fit': 'fit-content'
+      'fit': 'fit-content',
+
     },
     backdropBlur: {
       xs: '2px',
-      sm: '7px'
+      sm: '7px',
+      lg: '11px'
     },
   },
   plugins: [],
